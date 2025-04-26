@@ -7,7 +7,11 @@
 </p>
 
 
-**Payme ni yii2 ga integratsiya qilish** 
+**Payme ni yii2 ga integratsiya qilish**
+
+https://developer.help.paycom.uz/metody-merchant-api/
+
+https://documenter.getpostman.com/view/20738585/2sB2j1gC5h
 
 Asosiy fayllar
    * paymeuz/
