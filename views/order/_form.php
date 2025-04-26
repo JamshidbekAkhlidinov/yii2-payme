@@ -16,6 +16,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'amount')->textInput() ?>
 
+    <?= $form->field($model, 'created_at')->textInput() ?>
+
+    <?= $form->field($model, 'payment_status')->textInput() ?>
+
+    <?= $form->field($model, 'payment_at')->textInput() ?>
+
+    <?= $form->field($model, 'cancel_at')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

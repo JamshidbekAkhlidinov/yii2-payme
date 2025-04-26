@@ -33,8 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'order_id',
             'transaction_id',
             'amount',
+            'state',
+            'reason:ntext',
             'created_at',
             'perform_at',
+            'cancel_at',
         ],
     ]) ?>
 

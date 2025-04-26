@@ -12,13 +12,21 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'order_id')->textInput() ?>
+
     <?= $form->field($model, 'transaction_id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'amount')->textInput() ?>
 
+    <?= $form->field($model, 'state')->textInput() ?>
+
+    <?= $form->field($model, 'reason')->textarea(['rows' => 6]) ?>
+
     <?= $form->field($model, 'created_at')->textInput() ?>
 
     <?= $form->field($model, 'perform_at')->textInput() ?>
+
+    <?= $form->field($model, 'cancel_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

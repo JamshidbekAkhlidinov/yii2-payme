@@ -10,7 +10,6 @@ namespace app\paymeuz;
 
 interface ErrorEnum
 {
-    // Umumiy xatoliklar (Общие ошибки)
     public const NOT_POST_METHOD = -32300;
     public const JSON_PARSE_ERROR = -32700;
     public const MISSING_REQUIRED_FIELDS = -32600;
@@ -18,17 +17,14 @@ interface ErrorEnum
     public const INSUFFICIENT_PRIVILEGES = -32504;
     public const SYSTEM_ERROR = -32400;
 
-    // Merchant server javoblaridagi xatoliklar (Ошибки в ответах сервера мерчанта)
     public const INVALID_AMOUNT = -31001;
     public const TRANSACTION_NOT_FOUND = -31003;
     public const CANNOT_CANCEL_TRANSACTION = -31007;
     public const CANNOT_PERFORM_OPERATION = -31008;
 
-    // Foydalanuvchi kiritishidagi xatoliklar (Ошибки неверного ввода данных покупателем)
     public const INVALID_ACCOUNT_INPUT = -31050;
 
     public const MESSAGES = [
-        // Umumiy xatoliklar
         self::NOT_POST_METHOD => [
             'uz' => "So‘rov POST metodi orqali yuborilishi kerak.",
             'ru' => "Ошибка возникает если метод запроса не POST.",
@@ -60,7 +56,6 @@ interface ErrorEnum
             'en' => "System (internal) error. This error should be used in case of system failures: database failure, file system failure, undefined behavior, etc."
         ],
 
-        // Merchant server javoblaridagi xatoliklar
         self::INVALID_AMOUNT => [
             'uz' => "Noto‘g‘ri summa. Xatolik tranzaksiya summasi buyurtma summasiga mos kelmaganda yuz beradi. Bir martalik hisob-faktura chiqarilganda dolzarb.",
             'ru' => "Неверная сумма. Ошибка возникает когда сумма транзакции не совпадает с суммой заказа. Актуальна если выставлен одноразовый счёт.",
@@ -82,7 +77,6 @@ interface ErrorEnum
             'en' => "Cannot perform the operation. The error occurs if the transaction state does not allow the operation."
         ],
 
-        // Foydalanuvchi kiritishidagi xatoliklar
         self::INVALID_ACCOUNT_INPUT => [
             'uz' => "Foydalanuvchi tomonidan 'account' maydoniga noto‘g‘ri ma'lumot kiritilgan, masalan: kiritilgan login topilmadi, kiritilgan telefon raqami topilmadi va hokazo. Xatolarda lokalizatsiyalangan 'message' maydoni majburiy. 'data' maydoni 'account' submaydon nomini o‘z ichiga olishi kerak.",
             'ru' => "Ошибки, связанные с неверным пользовательским вводом 'account', например: введенный логин не найден, введенный номер телефона не найден и т.д. В ошибках локализованное поле 'message' обязательно. Поле 'data' должно содержать название субполя 'account'.",

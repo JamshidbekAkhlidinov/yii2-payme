@@ -20,8 +20,11 @@ class m250426_142320_create_payme_transaction_table extends Migration
             'order_id' => $this->integer(),
             'transaction_id' => $this->string(),
             'amount' => $this->double(),
+            'state' => $this->integer(),
+            'reason' => $this->text(),
             'created_at' => $this->datetime(),
             'perform_at' => $this->datetime(),
+            'cancel_at' => $this->datetime(),
         ]);
 
         // creates index for column `order_id`

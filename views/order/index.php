@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             'payment_status',
             'payment_at',
+            'cancel_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Order $model, $key, $index, $column) {

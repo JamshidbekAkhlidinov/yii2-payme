@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -13,11 +14,12 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $created_at
  * @property int|null $payment_status
  * @property string|null $payment_at
+ * @property string|null $cancel_at
+ *
+ * @property PaymeTransaction[] $paymeTransactions
  */
 class Order extends \yii\db\ActiveRecord
 {
-
-
     /**
      * {@inheritdoc}
      */
@@ -26,16 +28,27 @@ class Order extends \yii\db\ActiveRecord
         return 'order';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'updatedAtAttribute' => false,
+                'value' => date('Y-m-d H:i:s'),
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['product_name', 'amount', 'created_at', 'payment_at'], 'default', 'value' => null],
+            [['product_name', 'amount', 'created_at', 'payment_at', 'cancel_at'], 'default', 'value' => null],
             [['payment_status'], 'default', 'value' => 0],
             [['amount'], 'number'],
-            [['created_at', 'payment_at'], 'safe'],
+            [['created_at', 'payment_at', 'cancel_at'], 'safe'],
             [['payment_status'], 'integer'],
             [['product_name'], 'string', 'max' => 255],
         ];
@@ -53,17 +66,18 @@ class Order extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'payment_status' => 'Payment Status',
             'payment_at' => 'Payment At',
+            'cancel_at' => 'Cancel At',
         ];
     }
 
-    public function behaviors()
+    /**
+     * Gets query for [[PaymeTransactions]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPaymeTransactions()
     {
-        return [
-            [
-                'class' => TimestampBehavior::class,
-                'updatedAtAttribute' => false,
-                'value' => date('Y-m-d H:i:s'),
-            ]
-        ];
+        return $this->hasMany(PaymeTransaction::class, ['order_id' => 'id']);
     }
+
 }

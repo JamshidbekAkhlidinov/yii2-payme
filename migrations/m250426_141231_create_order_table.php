@@ -19,6 +19,7 @@ class m250426_141231_create_order_table extends Migration
             'created_at' => $this->dateTime(),
             'payment_status' => $this->integer()->defaultValue(0),
             'payment_at' => $this->dateTime(),
+            'cancel_at' => $this->dateTime(),
         ]);
     }
 

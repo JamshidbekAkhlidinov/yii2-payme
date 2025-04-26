@@ -16,8 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -27,8 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'order_id',
             'transaction_id',
             'amount',
+            'state',
+            'reason:ntext',
             'created_at',
             'perform_at',
+            'cancel_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, PaymeTransaction $model, $key, $index, $column) {
